@@ -36,7 +36,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Payment.prototype, "amount", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => package_entity_1.Package, pkg => pkg.id, { eager: false }),
+    (0, typeorm_1.ManyToOne)(() => package_entity_1.Package, (pkg) => pkg.id, { eager: false }),
     (0, typeorm_1.JoinColumn)({ name: 'packageId' }),
     __metadata("design:type", package_entity_1.Package)
 ], Payment.prototype, "package", void 0);

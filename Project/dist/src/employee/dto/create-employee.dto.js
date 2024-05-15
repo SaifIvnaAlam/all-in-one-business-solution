@@ -32,42 +32,64 @@ __decorate([
     (0, swagger_1.ApiProperty)({ example: 'John', description: 'First name of the employee' }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.Matches)(/^[A-Z][a-z]*$/, { message: 'First name must start with a capital letter and contain no numbers or special characters.' }),
+    (0, class_validator_1.Matches)(/^[A-Z][a-z]*$/, {
+        message: 'First name must start with a capital letter and contain no numbers or special characters.',
+    }),
     __metadata("design:type", String)
 ], CreateEmployeeDto.prototype, "firstName", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ example: 'Doe', description: 'Last name of the employee' }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.Matches)(/^[A-Z][a-z]*$/, { message: 'Last name must start with a capital letter and contain no numbers or special characters.' }),
+    (0, class_validator_1.Matches)(/^[A-Z][a-z]*$/, {
+        message: 'Last name must start with a capital letter and contain no numbers or special characters.',
+    }),
     __metadata("design:type", String)
 ], CreateEmployeeDto.prototype, "lastName", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'johndoe', description: 'Username for the employee account' }),
+    (0, swagger_1.ApiProperty)({
+        example: 'johndoe',
+        description: 'Username for the employee account',
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.Matches)(/^[a-z0-9_]+$/, { message: 'Username must be lowercase, may include underscores and numbers, but no spaces or special characters.' }),
+    (0, class_validator_1.Matches)(/^[a-z0-9_]+$/, {
+        message: 'Username must be lowercase, may include underscores and numbers, but no spaces or special characters.',
+    }),
     __metadata("design:type", String)
 ], CreateEmployeeDto.prototype, "username", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'john.doe@example.com', description: 'Email address of the employee' }),
+    (0, swagger_1.ApiProperty)({
+        example: 'john.doe@example.com',
+        description: 'Email address of the employee',
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
 ], CreateEmployeeDto.prototype, "email", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: '01712345678', description: 'Mobile number of the employee' }),
+    (0, swagger_1.ApiProperty)({
+        example: '01712345678',
+        description: 'Mobile number of the employee',
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.Matches)(/^01[3-9]\d{8}$/, { message: 'Mobile number must be a valid Bangladesh number.' }),
+    (0, class_validator_1.Matches)(/^01[3-9]\d{8}$/, {
+        message: 'Mobile number must be a valid Bangladesh number.',
+    }),
     __metadata("design:type", String)
 ], CreateEmployeeDto.prototype, "mobileNo", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Pass123$', description: 'Password for the employee account' }),
+    (0, swagger_1.ApiProperty)({
+        example: 'Pass123$',
+        description: 'Password for the employee account',
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(6),
-    (0, class_validator_1.Matches)(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;'<>,.?\/\\~`\-]).*$/, { message: 'Password must be at least 6 characters long, include at least one uppercase letter, one number, and one special character.' }),
+    (0, class_validator_1.Matches)(/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;'<>,.?\/\\~`\-]).*$/, {
+        message: 'Password must be at least 6 characters long, include at least one uppercase letter, one number, and one special character.',
+    }),
     __metadata("design:type", String)
 ], CreateEmployeeDto.prototype, "password", void 0);
 __decorate([
@@ -89,7 +111,10 @@ __decorate([
     __metadata("design:type", Number)
 ], CreateEmployeeDto.prototype, "employeesalary", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: '2023-01-01', description: 'Joining date of the employee' }),
+    (0, swagger_1.ApiProperty)({
+        example: '2023-01-01',
+        description: 'Joining date of the employee',
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsDateString)(),
     __metadata("design:type", Date)

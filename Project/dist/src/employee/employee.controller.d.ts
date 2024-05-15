@@ -1,5 +1,5 @@
-import { EmployeeService } from './employee.service';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
+import { EmployeeService } from './employee.service';
 export declare class EmployeeController {
     private readonly employeeService;
     constructor(employeeService: EmployeeService);

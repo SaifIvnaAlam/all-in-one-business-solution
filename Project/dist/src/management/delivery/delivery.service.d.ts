@@ -1,8 +1,8 @@
-import { UpdateDeliveryDto } from './dto/update-delivery.dto';
-import { Repository } from 'typeorm';
-import { Order } from 'src/order/entities/order.entity';
 import { InventoryManagement } from 'src/inventory-management/entities/inventory-management.entity';
 import { OrderItem } from 'src/order/entities/order-item.entity';
+import { Order } from 'src/order/entities/order.entity';
+import { Repository } from 'typeorm';
+import { UpdateDeliveryDto } from './dto/update-delivery.dto';
 export declare class DeliveryService {
     private readonly orderRepository;
     private readonly inventoryRepository;

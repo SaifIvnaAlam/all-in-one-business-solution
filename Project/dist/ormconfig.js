@@ -3,6 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
 const customer_entity_1 = require("./src/customer/entities/customer.entity");
 const employee_entity_1 = require("./src/employee/entities/employee.entity");
+const finance_entity_1 = require("./src/finance/entities/finance.entity");
+const revenue_entity_1 = require("./src/finance/entities/revenue.entity");
+const installment_entity_1 = require("./src/installments/entities/installment.entity");
 const inventory_management_entity_1 = require("./src/inventory-management/entities/inventory-management.entity");
 const invoice_entity_1 = require("./src/invoice/entities/invoice.entity");
 const leave_application_entity_1 = require("./src/leave-application/entities/leave-application.entity");
@@ -33,6 +36,9 @@ exports.config = {
         invoice_entity_1.Invoice,
         leave_application_entity_1.Leave,
         payment_entity_1.Payment,
+        revenue_entity_1.revenue,
+        finance_entity_1.finance,
+        installment_entity_1.installment,
     ],
     synchronize: true,
 };

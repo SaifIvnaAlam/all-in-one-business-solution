@@ -14,12 +14,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
-const user_service_1 = require("./user.service");
+const swagger_1 = require("@nestjs/swagger");
+const jwt_guard_1 = require("../guards/jwt.guard");
+const change_password_dto_1 = require("./dto/change-password.dto");
 const create_user_dto_1 = require("./dto/create-user.dto");
 const update_profile_dto_1 = require("./dto/update-profile.dto");
-const change_password_dto_1 = require("./dto/change-password.dto");
-const jwt_guard_1 = require("../guards/jwt.guard");
-const swagger_1 = require("@nestjs/swagger");
+const user_service_1 = require("./user.service");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -32,7 +32,7 @@ let UserController = class UserController {
     }
     async updateProfile(req, updateProfileDto) {
         await this.userService.updateProfile(req.user.userId, updateProfileDto);
-        return { message: "Profile updated successfully" };
+        return { message: 'Profile updated successfully' };
     }
     async changePassword(req, changePasswordDto) {
         if (changePasswordDto.newPassword !== changePasswordDto.confirmPassword) {

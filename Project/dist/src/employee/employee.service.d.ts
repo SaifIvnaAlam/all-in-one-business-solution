@@ -1,7 +1,7 @@
-import { CreateEmployeeDto } from './dto/create-employee.dto';
-import { Repository, Connection } from 'typeorm';
-import { Employee } from './entities/employee.entity';
 import { User } from 'src/user/entities/user.entity';
+import { Connection, Repository } from 'typeorm';
+import { CreateEmployeeDto } from './dto/create-employee.dto';
+import { Employee } from './entities/employee.entity';
 export declare class EmployeeService {
     private employeeRepository;
     private usersRepository;

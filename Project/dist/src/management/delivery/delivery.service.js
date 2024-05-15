@@ -15,10 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DeliveryService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const typeorm_2 = require("typeorm");
-const order_entity_1 = require("../../order/entities/order.entity");
 const inventory_management_entity_1 = require("../../inventory-management/entities/inventory-management.entity");
 const order_item_entity_1 = require("../../order/entities/order-item.entity");
+const order_entity_1 = require("../../order/entities/order.entity");
+const typeorm_2 = require("typeorm");
 let DeliveryService = class DeliveryService {
     constructor(orderRepository, inventoryRepository, orderItemRepository) {
         this.orderRepository = orderRepository;

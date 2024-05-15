@@ -15,10 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmployeeService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const bcrypt = require("bcrypt");
+const user_entity_1 = require("../user/entities/user.entity");
 const typeorm_2 = require("typeorm");
 const employee_entity_1 = require("./entities/employee.entity");
-const user_entity_1 = require("../user/entities/user.entity");
-const bcrypt = require("bcrypt");
 let EmployeeService = class EmployeeService {
     constructor(employeeRepository, usersRepository, connection) {
         this.employeeRepository = employeeRepository;
@@ -38,10 +38,18 @@ let EmployeeService = class EmployeeService {
         const saltOrRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltOrRounds);
         userDto.password = hashedPassword;
-        const newUser = this.usersRepository.create({ ...userDto, company, packageId });
+        const newUser = this.usersRepository.create({
+            ...userDto,
+            company,
+            packageId,
+        });
         const savedUser = await this.usersRepository.save(newUser);
         await this.connection.query(`SET search_path TO "${company}"`);
-        const employeeData = { userid: savedUser.userId, employeesalary, employeejoiningdate };
+        const employeeData = {
+            userid: savedUser.userId,
+            employeesalary,
+            employeejoiningdate,
+        };
         await this.connection.getRepository(employee_entity_1.Employee).save(employeeData);
         return { message: 'Employee registered successfully' };
     }
@@ -50,18 +58,24 @@ let EmployeeService = class EmployeeService {
         return employees;
     }
     async remove(id, company) {
-        const employee = await this.employeeRepository.findOneOrFail({ where: { employeeid: id } });
+        const employee = await this.employeeRepository.findOneOrFail({
+            where: { employeeid: id },
+        });
         if (!employee) {
             throw new common_1.NotFoundException(`Employee with ID ${id} not found`);
         }
         await this.employeeRepository.remove(employee);
         await this.connection.query(`SET search_path TO "public"`);
-        const user = await this.usersRepository.findOne({ where: { userId: employee.userid } });
+        const user = await this.usersRepository.findOne({
+            where: { userId: employee.userid },
+        });
         if (!user) {
             throw new common_1.NotFoundException(`User corresponding to employee with ID ${id} not found`);
         }
         await this.usersRepository.remove(user);
-        return { message: `Employee with ID ${id} and associated user removed successfully` };
+        return {
+            message: `Employee with ID ${id} and associated user removed successfully`,
+        };
     }
 };
 exports.EmployeeService = EmployeeService;

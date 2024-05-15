@@ -14,12 +14,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmployeeController = void 0;
 const common_1 = require("@nestjs/common");
-const employee_service_1 = require("./employee.service");
-const create_employee_dto_1 = require("./dto/create-employee.dto");
-const jwt_guard_1 = require("../guards/jwt.guard");
-const schema_guard_1 = require("../guards/schema.guard");
-const role_guard_1 = require("../guards/role.guard");
 const swagger_1 = require("@nestjs/swagger");
+const jwt_guard_1 = require("../guards/jwt.guard");
+const role_guard_1 = require("../guards/role.guard");
+const schema_guard_1 = require("../guards/schema.guard");
+const create_employee_dto_1 = require("./dto/create-employee.dto");
+const employee_service_1 = require("./employee.service");
 let EmployeeController = class EmployeeController {
     constructor(employeeService) {
         this.employeeService = employeeService;
@@ -40,7 +40,10 @@ exports.EmployeeController = EmployeeController;
 __decorate([
     (0, common_1.Post)('/registration'),
     (0, swagger_1.ApiOperation)({ summary: 'Register a new employee' }),
-    (0, swagger_1.ApiResponse)({ status: 201, description: 'Employee registered successfully.' }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: 'Employee registered successfully.',
+    }),
     (0, swagger_1.ApiResponse)({ status: 400, description: 'Bad Request.' }),
     __param(0, (0, common_1.Body)(common_1.ValidationPipe)),
     __param(1, (0, common_1.Req)()),

@@ -18,6 +18,8 @@ import { InvoiceModule } from './invoice/invoice.module';
 import { LeaveApplicationModule } from './leave-application/leave-application.module';
 import { PaymentModule } from './payment/payment.module';
 import { BanUserModule } from './ban-user/ban-user.module';
+import { FinanceModule } from './finance/finance.module';
+import { InstallmentsModule } from './installments/installments.module';
 
 @Module({
   imports: [
@@ -37,6 +39,8 @@ import { BanUserModule } from './ban-user/ban-user.module';
     LeaveApplicationModule,
     PaymentModule,
     BanUserModule,
+    FinanceModule,
+    InstallmentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

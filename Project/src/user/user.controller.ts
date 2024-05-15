@@ -1,10 +1,26 @@
-import { Controller, Get, Post, Body, Patch, Request, UseGuards, ValidationPipe, UnauthorizedException } from '@nestjs/common';
-import { UserService } from './user.service';
+import {
+  Body,
+  Controller,
+  Get,
+  Patch,
+  Post,
+  Request,
+  UnauthorizedException,
+  UseGuards,
+  ValidationPipe,
+} from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/guards/jwt.guard';
+import { ChangePasswordDto } from './dto/change-password.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
-import { ChangePasswordDto } from './dto/change-password.dto';
-import { JwtAuthGuard } from 'src/guards/jwt.guard';
-import { ApiTags, ApiBearerAuth, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
+import { UserService } from './user.service';
 
 @ApiTags('User')
 @Controller('user')
@@ -37,9 +53,12 @@ export class UserController {
   @ApiResponse({ status: 200, description: 'Profile updated successfully.' })
   @ApiResponse({ status: 400, description: 'Bad Request.' })
   @ApiBody({ type: UpdateProfileDto })
-  async updateProfile(@Request() req, @Body(ValidationPipe) updateProfileDto: UpdateProfileDto) {
+  async updateProfile(
+    @Request() req,
+    @Body(ValidationPipe) updateProfileDto: UpdateProfileDto,
+  ) {
     await this.userService.updateProfile(req.user.userId, updateProfileDto);
-    return { message: "Profile updated successfully" };
+    return { message: 'Profile updated successfully' };
   }
 
   @Patch('change-password')
@@ -49,11 +68,20 @@ export class UserController {
   @ApiResponse({ status: 200, description: 'Password successfully changed.' })
   @ApiResponse({ status: 400, description: 'Bad Request.' })
   @ApiBody({ type: ChangePasswordDto })
-  async changePassword(@Request() req, @Body(ValidationPipe) changePasswordDto: ChangePasswordDto) {
+  async changePassword(
+    @Request() req,
+    @Body(ValidationPipe) changePasswordDto: ChangePasswordDto,
+  ) {
     if (changePasswordDto.newPassword !== changePasswordDto.confirmPassword) {
-      throw new UnauthorizedException('New password and confirm password do not match');
+      throw new UnauthorizedException(
+        'New password and confirm password do not match',
+      );
     }
-    await this.userService.changePassword(req.user.userId, changePasswordDto.currentPassword, changePasswordDto.newPassword);
+    await this.userService.changePassword(
+      req.user.userId,
+      changePasswordDto.currentPassword,
+      changePasswordDto.newPassword,
+    );
     return { message: 'Password successfully changed' };
   }
 }

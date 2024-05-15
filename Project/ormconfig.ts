@@ -1,5 +1,8 @@
 import { Customer } from 'src/customer/entities/customer.entity';
 import { Employee } from 'src/employee/entities/employee.entity';
+import { finance } from 'src/finance/entities/finance.entity';
+import { revenue } from 'src/finance/entities/revenue.entity';
+import { installment } from 'src/installments/entities/installment.entity';
 import { InventoryManagement } from 'src/inventory-management/entities/inventory-management.entity';
 import { Invoice } from 'src/invoice/entities/invoice.entity';
 import { Leave } from 'src/leave-application/entities/leave-application.entity';
@@ -33,6 +36,9 @@ export const config: PostgresConnectionOptions = {
     Invoice,
     Leave,
     Payment,
+    revenue,
+    finance,
+    installment,
   ],
   synchronize: true,
 };

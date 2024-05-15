@@ -3,12 +3,12 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { UpdateDeliveryDto } from './dto/update-delivery.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Order, OrderStatus } from 'src/order/entities/order.entity';
 import { InventoryManagement } from 'src/inventory-management/entities/inventory-management.entity';
 import { OrderItem } from 'src/order/entities/order-item.entity';
+import { Order, OrderStatus } from 'src/order/entities/order.entity';
+import { Repository } from 'typeorm';
+import { UpdateDeliveryDto } from './dto/update-delivery.dto';
 
 @Injectable()
 export class DeliveryService {
